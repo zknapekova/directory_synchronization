@@ -4,11 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+timeloop-ng = "*"
 
 [dev-packages]
 pytest = "*"
-threaded = "*"
-multiprocess = "*"
 
 [requires]
 python_version = "3.10"

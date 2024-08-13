@@ -3,9 +3,10 @@ from hashlib import blake2b
 from multiprocessing import Process
 import os
 import logging
-from func import copy_item
+from dir_sync_helper_funcs import copy_item
 
 logger = logging.getLogger(__name__)
+
 
 class MultiprocessingAsync(Process):
     def __init__(self, files, source_dir_path, replica_dir_path):
