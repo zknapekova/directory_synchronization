@@ -5,7 +5,15 @@ from multiprocessing import cpu_count
 from async_multiprocessing_file_sync import MultiprocessingAsync
 
 
-def directory_sync(source_dir_path, replica_dir_path, log_file_path):
+def directory_sync(source_dir_path, replica_dir_path, log_file_path) -> None:
+    """
+    The function performs directory synchronization between the source and the replica location.
+
+    :param source_dir_path: The path to the source dir.
+    :param replica_dir_path: The path to the replica dir
+    :param log_file_path: The path to the log file.
+    :return:None
+    """
     logging.basicConfig(format="%(asctime)s %(levelname)s: %(message)s",
                         datefmt="%Y-%m-%d %H:%M:%S",
                         level=logging.INFO,
@@ -24,7 +32,7 @@ def directory_sync(source_dir_path, replica_dir_path, log_file_path):
     list_of_files_to_cmp = get_list_of_files_to_cmp(all_items_source, source_dir_path)
     result = distribute_files(list_of_files_to_cmp, num_cpu_to_use)
 
-    # create multiprocessing processes for parallel execution
+    # create processes for parallel execution
     processes = []
     for i in range(len(result)):
         processes.append(
